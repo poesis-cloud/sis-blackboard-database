@@ -1,5 +1,11 @@
 # SIE Definition Blackboard Database (Helm Chart)
 
+[![CI](https://github.com/poesis-cloud/sie-definition-blackboard-database/actions/workflows/ci.yaml/badge.svg)](https://github.com/poesis-cloud/sie-definition-blackboard-database/actions/workflows/ci.yaml)
+[![Release](https://img.shields.io/github/v/release/poesis-cloud/sie-definition-blackboard-database)](https://github.com/poesis-cloud/sie-definition-blackboard-database/releases/latest)
+[![Helm](https://img.shields.io/badge/Helm-chart-0F1689?logo=helm&logoColor=white)](ops/helm/Chart.yaml)
+[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-16-4169E1?logo=postgresql&logoColor=white)](ops/helm/Chart.yaml)
+[![License: BUSL-1.1](https://img.shields.io/badge/license-BUSL--1.1-blue)](LICENSE)
+
 This module packages the PostgreSQL backing store for the
 **[Definition Blackboard Manager](../sie-definition-blackboard-manager/)**
 (DBM) as a Helm chart.
