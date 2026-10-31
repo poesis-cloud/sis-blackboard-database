@@ -1,4 +1,4 @@
-name: definition-blackboard-database-cd
+name: blackboard-database-cd
 
 on:
   workflow_dispatch:
@@ -63,5 +63,5 @@ jobs:
       - name: Upload helm package
         uses: actions/upload-artifact@v4
         with:
-          name: definition-blackboard-database-helm-package
+          name: blackboard-database-helm-package
           path: "*.tgz"

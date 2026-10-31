@@ -1,4 +1,4 @@
-name: definition-blackboard-database-ci
+name: blackboard-database-ci
 
 on:
   push:

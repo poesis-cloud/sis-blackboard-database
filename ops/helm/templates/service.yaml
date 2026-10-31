@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ include "sie-definition-blackboard-database.fullname" . }}
+  name: {{ include "sis-blackboard-database.fullname" . }}
   labels:
-    {{- include "sie-definition-blackboard-database.labels" . | nindent 4 }}
+    {{- include "sis-blackboard-database.labels" . | nindent 4 }}
   annotations:
     {{- toYaml .Values.service.annotations | nindent 4 }}
 spec:
@@ -13,5 +13,5 @@ spec:
       port: {{ .Values.service.port }}
       targetPort: postgres
   selector:
-    app.kubernetes.io/name: {{ include "sie-definition-blackboard-database.name" . }}
+    app.kubernetes.io/name: {{ include "sis-blackboard-database.name" . }}
     app.kubernetes.io/instance: {{ .Release.Name }}

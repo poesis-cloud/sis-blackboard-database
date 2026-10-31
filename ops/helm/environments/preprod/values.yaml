@@ -16,8 +16,8 @@ service:
   annotations: {}
 
 postgres:
-  user: sie
-  database: sie_definition_blackboard
+  user: sis
+  database: sis_blackboard
   existingSecret: ""
   extensions: []
 
