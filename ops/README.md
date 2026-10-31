@@ -1,6 +1,6 @@
-# SIE Definition Blackboard Database deployables
+# SIS Blackboard Database deployables
 
-This folder contains ops/runtime assets for the Definition Blackboard Database service.
+This folder contains ops/runtime assets for the Blackboard Database service.
 
 - `ops/helm/`: Helm chart for Kubernetes deployments (dev/stage/prod depending cluster/context)
 
@@ -13,9 +13,9 @@ Chart path:
 Install with defaults:
 
 ```bash
-helm upgrade --install sie-definition-blackboard-database \
-  sie/sie-definition-blackboard-database/ops/helm \
-  -n sie --create-namespace
+helm upgrade --install sis-blackboard-database \
+  sis/sis-blackboard-database/ops/helm \
+  -n sis --create-namespace
 ```
 
 Environment values:
@@ -30,10 +30,10 @@ target environment.
 Recommended deploy command:
 
 ```bash
-helm upgrade --install sie-definition-blackboard-database \
-  sie/sie-definition-blackboard-database/ops/helm \
-  -n sie --create-namespace \
-  -f sie/sie-definition-blackboard-database/ops/helm/environments/preprod/values.yaml \
+helm upgrade --install sis-blackboard-database \
+  sis/sis-blackboard-database/ops/helm \
+  -n sis --create-namespace \
+  -f sis/sis-blackboard-database/ops/helm/environments/preprod/values.yaml \
   --set-string secrets.DB_PASSWORD="$DB_PASSWORD"
 ```
 

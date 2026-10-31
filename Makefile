@@ -6,9 +6,9 @@ SHELL := /bin/bash
 -include .env
 -include .env.dev
 
-NAMESPACE ?= sie
+NAMESPACE ?= sis
 DEPLOY_ENV ?= preprod
-RELEASE_DEF_BB_DB ?= sie-definition-blackboard-database
+RELEASE_DEF_BB_DB ?= sis-blackboard-database
 
 DEF_BB_DB_CHART ?= ops/helm
 DEF_BB_DB_ENV_FILE ?= $(DEF_BB_DB_CHART)/environments/$(DEPLOY_ENV)/values.yaml
@@ -45,8 +45,8 @@ dev-up:
 		xargs -r kill < "$(PORT_FORWARD_PID_FILE)" 2>/dev/null || true; \
 		rm -f "$(PORT_FORWARD_PID_FILE)"; \
 	fi
-	nohup kubectl -n $(NAMESPACE) port-forward svc/$(RELEASE_DEF_BB_DB) 5432:5432 >/tmp/sie-bb-db-pf-postgres.log 2>&1 & echo $$! >> "$(PORT_FORWARD_PID_FILE)"
-	@echo "Definition Blackboard Database is ready and port-forward started."
+	nohup kubectl -n $(NAMESPACE) port-forward svc/$(RELEASE_DEF_BB_DB) 5432:5432 >/tmp/sis-bb-db-pf-postgres.log 2>&1 & echo $$! >> "$(PORT_FORWARD_PID_FILE)"
+	@echo "Blackboard Database is ready and port-forward started."
 
 dev-down:
 	@if [[ -f "$(PORT_FORWARD_PID_FILE)" ]]; then \

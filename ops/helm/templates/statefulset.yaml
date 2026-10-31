@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: {{ include "sie-definition-blackboard-database.fullname" . }}
+  name: {{ include "sis-blackboard-database.fullname" . }}
   labels:
-    {{- include "sie-definition-blackboard-database.labels" . | nindent 4 }}
+    {{- include "sis-blackboard-database.labels" . | nindent 4 }}
 spec:
-  serviceName: {{ include "sie-definition-blackboard-database.fullname" . }}
+  serviceName: {{ include "sis-blackboard-database.fullname" . }}
   replicas: 1
   selector:
     matchLabels:
-      app.kubernetes.io/name: {{ include "sie-definition-blackboard-database.name" . }}
+      app.kubernetes.io/name: {{ include "sis-blackboard-database.name" . }}
       app.kubernetes.io/instance: {{ .Release.Name }}
   template:
     metadata:
       labels:
-        app.kubernetes.io/name: {{ include "sie-definition-blackboard-database.name" . }}
+        app.kubernetes.io/name: {{ include "sis-blackboard-database.name" . }}
         app.kubernetes.io/instance: {{ .Release.Name }}
     spec:
       {{- with .Values.imagePullSecrets }}
@@ -38,7 +38,7 @@ spec:
             - name: POSTGRES_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: {{ default (printf "%s-auth" (include "sie-definition-blackboard-database.fullname" .)) .Values.postgres.existingSecret }}
+                  name: {{ default (printf "%s-auth" (include "sis-blackboard-database.fullname" .)) .Values.postgres.existingSecret }}
                   key: POSTGRES_PASSWORD
             - name: POSTGRES_DB
               value: {{ .Values.postgres.database | quote }}
@@ -61,7 +61,7 @@ spec:
         {{- if and .Values.initdb.enabled (or (gt (len (.Files.Glob "def/*.sql")) 0) (gt (len .Values.postgres.extensions) 0) (gt (len .Values.initdb.extraScripts) 0)) }}
         - name: initdb
           configMap:
-            name: {{ include "sie-definition-blackboard-database.fullname" . }}-initdb
+            name: {{ include "sis-blackboard-database.fullname" . }}-initdb
         {{- end }}
         {{- if not .Values.persistence.enabled }}
         - name: data
